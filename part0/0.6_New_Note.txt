@@ -1,0 +1,10 @@
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+note over browser:
+browser starts executing js-code
+and display the new note on the HTML
+end note over
+
+note over server:
+server add new note to json file
+end note over
