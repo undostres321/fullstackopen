@@ -12,20 +12,36 @@ const Statistics = ({good, bad, neutral}) => {
     )
   }
   return (
-    <div>
-      <Statistic text='good' value={ good }></Statistic>
-      <Statistic text='neutral' value={ neutral }></Statistic>
-      <Statistic text='bad' value={ bad }></Statistic>
-      <Statistic text='all' value={ good + neutral + bad }></Statistic>
-      <Statistic text='average' value={ (good - bad) / (good + neutral + bad) }></Statistic>
-      <Statistic text='positive' value={ good * 100 / (good + neutral + bad) }></Statistic>
-    </div>
+    <table>
+      <tbody>
+        <Statistic text='good' value={ good }></Statistic>
+        <Statistic text='neutral' value={ neutral }></Statistic>
+        <Statistic text='bad' value={ bad }></Statistic>
+        <Statistic text='all' value={ good + neutral + bad }></Statistic>
+        <Statistic text='average' value={ (good - bad) / (good + neutral + bad) }></Statistic>
+        <Statistic text='positive' value={ good * 100 / (good + neutral + bad) }></Statistic>
+      </tbody>
+    </table>
   )
 }
 
-const Statistic = ({text, value}) => (
-  <div>{ text } { value }</div>
-)
+const Statistic = ({text, value}) => {
+  if (text === 'positive') {
+    return (
+      <tr>
+        <td>{ text }</td> 
+        <td>{ value } %</td>
+      </tr>
+    )
+  }
+  return (
+    <tr>
+      <td>{ text }</td> 
+      <td>{ value }</td>
+    </tr>
+  )
+
+}
 
 const App = () => {
   // save clicks of each button to own state
