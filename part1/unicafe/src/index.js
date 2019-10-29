@@ -5,25 +5,20 @@ const Button = ({onClick, text}) => (
   <button onClick={ onClick }>{ text }</button>
 )
 
-const Average = ({good, bad, neutral}) => {
+const Statistics = ({good, bad, neutral}) => {
   if ((good === 0) && (neutral === 0) && (bad === 0)) {
     return (
-      <div>average 0</div>
+      <div>
+        <div>average 0</div>
+        <div>positive 0</div>
+      </div>
     )
   }
   return (
-    <div>average { (good - bad) / (good + neutral + bad) }</div>
-  )
-}
-
-const PositivePercentage = ({good, bad, neutral}) => {
-  if ((good === 0) && (neutral === 0) && (bad === 0)) {
-    return (
-      <div>positive 0</div>
-    )
-  }
-  return (
-    <div>positive {good * 100 / (good + neutral + bad)} %</div>
+    <div>
+      <div>average { (good - bad) / (good + neutral + bad) }</div>
+      <div>positive {good * 100 / (good + neutral + bad)} %</div>
+    </div>
   )
 }
 
@@ -63,8 +58,7 @@ const App = () => {
       <div>neutral { neutral }</div>
       <div>bad { bad }</div>
       <div>all { good + neutral + bad }</div>
-      <Average good={ good } bad={ bad } neutral={ neutral }></Average>
-      <PositivePercentage good={ good } bad={ bad } neutral={ neutral }></PositivePercentage>
+      <Statistics good={ good } bad={ bad } neutral={ neutral }></Statistics>
     </div>
   )
 }
